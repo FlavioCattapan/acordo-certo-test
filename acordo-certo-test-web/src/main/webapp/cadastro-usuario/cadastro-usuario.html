@@ -1,0 +1,30 @@
+<div class="card border-dark mx-auto mt-5" style="max-width: 25rem;">
+    <div class="card-header">Cadastro de Usuários</div>
+    <div class="card-body">
+        <form name="formUsu">
+			<div class="form-group">
+                <label for="exampleInputEmail1">Nome</label>
+                <input type="nome" class="form-control" name="nome" required id="inputNome" ng-model="usuario.nome" aria-describedby="nomeHelp" placeholder="Entre com o nome">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Setor</label>
+                <select class="form-control" required name="setor" placeholder="Entre com o setor" ng-model="usuario.setor" id="exampleFormControlSelect1">
+      <option value="1" >Manutenção</option>
+      <option value="2" >Estoque</option>
+      <option value="3" >Qualidade</option>
+    </select>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" ng-model="usuario.valeRefeicao" ng-true-value="'S'" ng-false-value="'N'" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Vale Refeição</label>
+            </div>
+            <button type="submit" ng-disabled="formUsu.$invalid" ng-click="cadastrar()" class="btn btn-primary">Cadastrar</button>
+            <div ng-show="msgSuccess" class="alert alert-success mt-3" role="alert">
+                Usuário cadastrado!
+            </div>
+            <div ng-show="msgError" class="alert alert-error mt-3" role="alert">
+                Ocorreu um erro ao cadastrar!
+            </div>
+        </form>
+    </div>
+</div>

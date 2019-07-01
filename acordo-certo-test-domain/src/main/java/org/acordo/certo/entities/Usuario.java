@@ -1,21 +1,27 @@
 package org.acordo.certo.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name = Usuario.SEQUENCE_NAME, sequenceName = Usuario.SEQUENCE_NAME, allocationSize = 1, initialValue = 1)
 public class Usuario {
 
+	public static final String SEQUENCE_NAME = "usuario_id_seq";
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
 	private Integer id;
 
 	@Column
 	private String nome;
 
-	 @ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
+	@ManyToOne()
 	private Setor setor;
 
 	@Column
